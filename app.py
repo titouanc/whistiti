@@ -71,12 +71,3 @@ class WhistitiGame(ApplicationSession):
         yield self.subscribe(self.start_game, 'trigger_start_game')
         yield self.register(self.bid, 'bid')
         print "Application", self.seed, "ready"
- 
-
-if __name__ == '__main__':
-    options = {
-        'url': settings.WAMP_ROUTER,
-        'realm': settings.WAMP_REALM,
-        'debug': settings.DEBUG,
-    }
-    ApplicationRunner(**options).run(WhistitiGame)
