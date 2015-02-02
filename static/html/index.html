@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Whistiti</title>
+    <meta charset='utf-8'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <meta content='Whistiti, a belgian whist online game on websockets' name='description'>
+    <meta content='iTitou' name='author'>
+    <link href='/static/3rdparty/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='/static/css/style.css' rel='stylesheet'>
+  </head>
+  <body role='document'>
+    <nav class='navbar navbar-inverse navbar-fixed-top'>
+      <div class='container'>
+        <div class='navbar-header'>
+          <button aria-controls='navbar' aria-expanded='false' class='navbar-toggle collapsed' data-target='#navbar' data-toggle='collapse' type='button'>
+            <span class='sr-only'>Replier</span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a class='navbar-brand' href='#'>Whistiti</a>
+        </div>
+        <div class='navbar-collapse collapse' id='navbar'>
+          <ul class='nav navbar-nav'>
+            <li>
+              <a href='#'>Les règles</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-md-2' id='sidebar'>
+          <h1>Le whistiti</h1>
+          <div class='loading panel' id='loading-panel'>
+            Chargement en cours
+          </div>
+          <div class='panel hidden' id='join-panel'>
+            <input id='nickname' placeholder='Pseudonyme' type='text'>
+            <button class='btn btn-default' id='join-button' type='button'>
+              Rejoindre une partie
+            </button>
+          </div>
+          <div class='panel hidden' id='queued-panel'></div>
+          <div class='panel hidden' id='scores-panel'></div>
+          <div class='panel hidden' id='bid-panel'>
+            <h3>Paris</h3>
+            <a class='bid' data-id='solo' href='#'>Solo</a>
+          </div>
+        </div>
+        <div class='col-md-10'>
+          <div class='row' id='hand'>
+            <ul id='hand-content'></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src='/static/3rdparty/js/jquery.min.js' type='text/javascript'></script>
+    <script src='/static/3rdparty/js/bootstrap.min.js' type='text/javascript'></script>
+    <script src='/static/3rdparty/js/autobahn.js' type='text/javascript'></script>
+    <script src='/static/3rdparty/js/handlebars.js' type='text/javascript'></script>
+    <script src='/static/js/game.js' type='text/javascript'></script>
+    <script id='scores-template' type='text/x-handlebars-template'>
+      <div class='scores' id='scores_{{player_name}}'>
+        <h3>{{ player_name }}</h3>
+      </div>
+    </script>
+    <script id='card-template' type='text/x-handlebars-template'>
+      <a href='#'>
+        <img class='card' data-id='{{cardid}}' src='/static/img/cards/{{cardid}}.png'>
+      </a>
+    </script>
+    <script id='queued-template' type='text/x-handlebars-template'>
+      En file d'attente
+      <div class='progress'>
+        <div aria-valuemax='4' aria-valuemin='0' aria-valuenow='{{ queue_size }}' class='progress-bar progress-bar-striped active' role='progressbar' style='width:{{ queue_pct }}%;'>
+          {{ queue_size }}/4 joueurs
+        </div>
+        <div aria-valuemax='4' aria-valuemin='0' aria-valuenow='{{ queue_remain }}' class='progress-bar progress-bar-info progress-bar-striped active' role='progressbar' style='width:{{ queue_remain_pct }}%;'></div>
+      </div>
+    </script>
+  </body>
+</html>

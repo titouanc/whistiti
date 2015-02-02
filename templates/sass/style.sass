@@ -1,0 +1,28 @@
+$select-color: #fff35b
+
+body
+  padding-top: 50px
+
+#hand
+  position: fixed
+  bottom: 10px
+  ul#hand-content
+    padding: 0px
+    li
+      display: inline
+      list-style: none
+      img
+        min-width: 4%
+        max-width: 7%
+
+.card
+  border: none
+  border-radius: 5px
+  padding: 7px
+  cursor: hand
+  &.selected
+    background-color: $select-color
+
+.panel
+  &.hidden
+    display: none

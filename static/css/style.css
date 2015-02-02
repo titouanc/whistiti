@@ -1,0 +1,33 @@
+body {
+  padding-top: 50px;
+}
+
+#hand {
+  position: fixed;
+  bottom: 10px;
+}
+#hand ul#hand-content {
+  padding: 0px;
+}
+#hand ul#hand-content li {
+  display: inline;
+  list-style: none;
+}
+#hand ul#hand-content li img {
+  min-width: 4%;
+  max-width: 7%;
+}
+
+.card {
+  border: none;
+  border-radius: 5px;
+  padding: 7px;
+  cursor: hand;
+}
+.card.selected {
+  background-color: #fff35b;
+}
+
+.panel.hidden {
+  display: none;
+}
